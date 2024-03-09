@@ -24,3 +24,48 @@
                                                                     | - duracao        |
                                                                     | - numeroTemporada|
                                                                      +-----------------+
+
+
+```mermaid
+classDiagram
+  class Cliente {
+    +nome: String
+    +email: String
+    +password: String
+    +endereco: String
+    +CPF: String
+  }
+
+  class Filme {
+    +tituloFilme: String
+    +genero: String
+    +anoLancamento: String
+    +avaliacao: String
+    +duracao: String
+    +valorAluguel: String
+  }
+
+  class Serie {
+    +tituloSeries: String
+    +genero: String
+    +anoLancamento: String
+    +avaliacao: String
+    +precoAluguel: String
+    +duracao: String
+    +numeroTemporada: String
+  }
+
+  class Aluguel {
+    +cliente: Cliente
+    +filme: Filme
+    +serie: Serie
+    +dataAluguel: Date
+    +dataDevolucao: Date
+  }
+
+  Cliente --> Aluguel
+  Filme --> Aluguel
+  Serie --> Aluguel
+
+
+```
