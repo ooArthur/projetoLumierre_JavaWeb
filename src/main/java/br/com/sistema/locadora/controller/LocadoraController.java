@@ -1,5 +1,12 @@
 package br.com.sistema.locadora.controller;
 
-public class LocadoraController {
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
+@RequestMapping("/")
+public class LocadoraController {
+	
+	
+	
 }
