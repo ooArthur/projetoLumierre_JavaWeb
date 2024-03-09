@@ -1,25 +1,26 @@
 
 # projetoLumierre_JavaWeb
-    +-----------------+          +--------------+          +---------------+
-    |     User       |          |    Rental    |          |     Movie     |
-    +-----------------+          +--------------+          +---------------+
-    | - name         |<----1      | - user       |<----1     | - title       |
-    | - email        |----|------>| - movie     |----|     | - genre      |
-    | - password     |          | - series    |    |     | - releaseYear|
-    | - address      |          | - rentalDate|    |     | - rating     |
-    +-----------------+          | - returnDate|    |     | - rentalPrice|
-                                  +--------------+    |     | - rentalDuration|
-                                                       +---------------+
-                                                            |
-                                                            |
-                                                      +-------------+
-                                                      | Series      |
-                                                      +-------------+
-                                                      | - title     |
-                                                      | - genre     |
-                                                      | - releaseYear|
-                                                      | - rating    |
-                                                      | - rentalPrice|
-                                                      | - rentalDuration|
-                                                      | - numberOfSeasons|
-                                                      +---------------+
+    +-----------------+                +--------------+            +---------------+
+    |     Cliente     |               |    Aluguel     |           |     filmes    |
+    +-----------------+                +--------------+            +---------------+
+    | - nome          |               | - nome         |          | - tituloFilme   |
+    | - email         | <----1 ------>| - filme        |<----1--- | - genero        |
+    | - password      |               | - series       |          | -anoLancamento  |
+    | - endereco      |               | - dataAluguel  |          | - avaliacao     |
+    | - CPF           |               | -dataADevolucao|          | -ValorAluguel   |
+    +-----------------+               |                |          | -duracao        |
+                                       +--------------+           |                 |
+                                                                   +---------------+
+                                                                           |
+                                                                           |
+                                                                    +------------------+
+                                                                    |    Series        |
+                                                                    +------------------+
+                                                                    | - titleSeries    |
+                                                                    | - genero         |
+                                                                    | - anoLancamento  |
+                                                                    | - avaliacao      |
+                                                                    | - precoAluguel   |
+                                                                    | - duracao        |
+                                                                    | - numeroTemporada|
+                                                                     +-----------------+
