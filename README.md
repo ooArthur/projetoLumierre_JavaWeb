@@ -39,7 +39,7 @@ classDiagram
   class Filme {
     -tituloFilme: String
     -genero: String
-    -anoLancamento: String
+    -anoLancamento: Interger
     -avaliacao: String
     -duracao: String
     -valorAluguel: String
@@ -50,9 +50,9 @@ classDiagram
     -genero: String
     -anoLancamento: String
     -avaliacao: String
-    -precoAluguel: String
+    -valorAluguel: String
     -duracao: String
-    -numeroTemporada: String
+    -numeroTemporada: Integer
   }
 
   class Aluguel {
