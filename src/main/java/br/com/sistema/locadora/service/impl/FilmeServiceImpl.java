@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 
 import br.com.sistema.locadora.exception.LocadoraNotFoundException;
 import br.com.sistema.locadora.models.Cliente;
+import br.com.sistema.locadora.models.Filme;
 import br.com.sistema.locadora.repo.ClienteRepository;
+import br.com.sistema.locadora.repo.FilmeRepository;
 import br.com.sistema.locadora.service.IClienteService;
+import br.com.sistema.locadora.service.IFilmeService;
 
 @Service
 public class FilmeServiceImpl implements IFilmeService {

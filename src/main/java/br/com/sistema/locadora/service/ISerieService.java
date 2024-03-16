@@ -10,6 +10,6 @@ public interface ISerieService {
 	public List<Serie> buscarTodasAsSeries();
 	public Serie buscarSerie(Long id);
 	public void deletarSerie(Long id);
-	public void atualizarSerie(Long id);
+	public void atualizarSerie(Serie serie);
 
 }

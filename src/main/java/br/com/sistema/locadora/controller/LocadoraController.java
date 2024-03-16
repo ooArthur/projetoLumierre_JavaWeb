@@ -1,7 +1,9 @@
 package br.com.sistema.locadora.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.locadora.sistema.exception.LocadoraNotFoundException;
-import br.com.locadora.sistema.model.Cliente;
-import br.com.locadora.sistema.service.IClienteService;
+import br.com.sistema.locadora.exception.LocadoraNotFoundException;
+import br.com.sistema.locadora.models.Cliente;
+import br.com.sistema.locadora.models.Filme;
+import br.com.sistema.locadora.models.Serie;
+import br.com.sistema.locadora.service.IClienteService;
+import br.com.sistema.locadora.service.IFilmeService;
+import br.com.sistema.locadora.service.ISerieService;
 
 @Controller
 @RequestMapping("/locadora")
@@ -22,10 +28,10 @@ public class LocadoraController {
 	private IClienteService service;
 
 	@Autowired
-	private IFilmeService service;
+	private IFilmeService service1;
 	
 	@Autowired
-	private ISerieService service;
+	private ISerieService service2;
 	
 	@GetMapping("/")
 	public String paginaInicial() {
@@ -65,9 +71,9 @@ public class LocadoraController {
 		@PostMapping("/adicionar")
 		public String salvarFilme(@ModelAttribute Filme filme, Model model) {
 		// @ ModelAttribute vincula as informações do formulario a um objeto
-		service.salvarFilme(filme);
+		service1.salvarFilme(filme);
 		// salva novamente (redundante) retorna o id do nosso filme
-		Long id = service.salvarFilme(filme).getId();
+		Long id = service1.salvarFilme(filme).getId();
 		// mensagem para o usuario
 		String mensagem = "Salvo com o id: " + id + " com sucesso!";
 		// adicionando mensagem na resposta
@@ -78,9 +84,9 @@ public class LocadoraController {
 		@PostMapping("/adicionar")
 		public String salvarSerie(@ModelAttribute Serie serie, Model model) {
 		// @ ModelAttribute vincula as informações do formulario a um objeto
-		service.salvarSerie(serie);
+		service2.salvarSerie(serie);
 		// salva novamente (redundante) retorna o id do nosso filme
-		Long id = service.salvarSerie(serie).getId();
+		Long id = service2.salvarSerie(serie).getId();
 		// mensagem para o usuario
 		String mensagem = "Salvo com o id: " + id + " com sucesso!";
 		// adicionando mensagem na resposta
@@ -99,7 +105,7 @@ public class LocadoraController {
 
 	@PostMapping("/atualizar")
 	public String atualizarFilme(@ModelAttribute Filme filme, RedirectAttributes attributes) {
-	service.atualizarFilme(filme);
+	service1.atualizarFilme(filme);
 	Long id = filme.getId();
 	attributes.addAttribute("message", "Filme com o Id: " + id + " foi atualizado!");
 	return "redirect:listar";
@@ -107,7 +113,7 @@ public class LocadoraController {
 
 	@PostMapping("/atualizar")
 	public String atualizarSerie(@ModelAttribute Serie serie, RedirectAttributes attributes) {
-	service.atualizarSerie(serie);
+	service2.atualizarSerie(serie);
 	Long id = serie.getId();
 	attributes.addAttribute("message", "Serie com o Id: " + id + " foi atualizado!");
 	return "redirect:listar";
@@ -135,7 +141,7 @@ public class LocadoraController {
 		public String editarFilme(Model model, RedirectAttributes attributes, @RequestParam Long id) {
 		String page;
 		try {
-			Filme filme = service.buscarFilme(id);
+			Filme filme = service1.buscarFilme(id);
 			model.addAttribute("filme", filme);
 			page = "editarFilme";
 		} catch (LocadoraNotFoundException e) {
@@ -151,7 +157,7 @@ public class LocadoraController {
 		public String editarSerie(Model model, RedirectAttributes attributes, @RequestParam Long id) {
 		String page;
 		try {
-			Serie serie = service.buscarSerie(id);
+			Serie serie = service2.buscarSerie(id);
 			model.addAttribute("serie", serie);
 			page = "editarSerie";
 		} catch (LocadoraNotFoundException e) {
@@ -179,7 +185,7 @@ public class LocadoraController {
 	@GetMapping("/deletar")
 	public String deletarFilme(@RequestParam Long id, RedirectAttributes attributes) {
 		try {
-			service.deletarFilme(id);
+			service1.deletarFilme(id);
 			attributes.addAttribute("message", "O Filme foi deletado, id: " + id);
 		} catch (LocadoraNotFoundException e) {
 			e.printStackTrace();
@@ -192,7 +198,7 @@ public class LocadoraController {
 	@GetMapping("/deletar")
 	public String deletarSerie(@RequestParam Long id, RedirectAttributes attributes) {
 		try {
-			service.deletarSerie(id);
+			service2.deletarSerie(id);
 			attributes.addAttribute("message", "O Serie foi deletado, id: " + id);
 		} catch (LocadoraNotFoundException e) {
 			e.printStackTrace();
@@ -206,7 +212,7 @@ public class LocadoraController {
 	public String listarCliente(@RequestParam(value = "message", required = false) String message, Model model) {
 		// /user/lista? message=hello%world
 		// lista dos clientes
-		List<Cliente> cliente = service.buscarTodosOsCliente();
+		List<Cliente> cliente = service.buscarTodosOsClientes();
 		model.addAttribute("lista", cliente);
 		// mensagem caso exista
 		model.addAttribute("messagem", message);
@@ -218,7 +224,7 @@ public class LocadoraController {
 	public String listarFilme(@RequestParam(value = "message", required = false) String message, Model model) {
 		// /user/lista? message=hello%world
 		// lista dos filmes
-		List<Filme> filme = service.buscarTodosOsFilme();
+		List<Filme> filme = service1.buscarTodosOsFilmes();
 		model.addAttribute("lista", filme);
 		// mensagem caso exista
 		model.addAttribute("messagem", message);
@@ -229,8 +235,8 @@ public class LocadoraController {
 	public String listarSerie(@RequestParam(value = "message", required = false) String message, Model model) {
 		// /user/lista? message=hello%world
 		// lista das Series
-		List<Serie> serie = service.buscarTodasAsSeries();
-		model.addAttribute("lista", filme);
+		List<Serie> serie = service2.buscarTodasAsSeries();
+		model.addAttribute("lista", serie);
 		// mensagem caso exista
 		model.addAttribute("messagem", message);
 		return "listarSeries";

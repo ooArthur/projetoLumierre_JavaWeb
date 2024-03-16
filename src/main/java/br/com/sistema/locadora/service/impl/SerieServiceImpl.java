@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 
 import br.com.sistema.locadora.exception.LocadoraNotFoundException;
 import br.com.sistema.locadora.models.Cliente;
+import br.com.sistema.locadora.models.Serie;
 import br.com.sistema.locadora.repo.ClienteRepository;
+import br.com.sistema.locadora.repo.SerieRepository;
 import br.com.sistema.locadora.service.IClienteService;
+import br.com.sistema.locadora.service.ISerieService;
 
 @Service
 public class SerieServiceImpl implements ISerieService {
@@ -24,7 +27,7 @@ public class SerieServiceImpl implements ISerieService {
 	}
 
 	@Override
-	public List<Serie> buscarTodosAsSerie() {
+	public List<Serie> buscarTodasAsSeries() {
 		// TODO Auto-generated method stub
 		return repo.findAll();
 	}

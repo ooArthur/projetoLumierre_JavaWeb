@@ -10,6 +10,8 @@ public interface IFilmeService {
 	public List<Filme> buscarTodosOsFilmes();
 	public Filme buscarFilme(Long id);
 	public void deletarFilme(Long id);
-	public void atualizarFilme(Long id);
+	public void atualizarFilme(Filme filme);
+
+	
 	
 }
