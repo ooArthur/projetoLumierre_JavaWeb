@@ -11,16 +11,18 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Filme {
+public class Produto {
+	
 	@Id
 	@GeneratedValue
 	private Long id;
 	
-	private String tituloFilme;
+	private String tituloSerie;
 	private String genero;
 	private Integer anoLancamento;
 	private String avaliacao;
-	private String duracao;
 	private BigDecimal valorAluguel;
+	private String duracao;
+	private Integer numeroTemporadas;
 	
 }

@@ -14,11 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.sistema.locadora.exception.LocadoraNotFoundException;
 import br.com.sistema.locadora.models.Cliente;
-import br.com.sistema.locadora.models.Filme;
-import br.com.sistema.locadora.models.Serie;
+import br.com.sistema.locadora.models.Produto;
 import br.com.sistema.locadora.service.IClienteService;
-import br.com.sistema.locadora.service.IFilmeService;
-import br.com.sistema.locadora.service.ISerieService;
+import br.com.sistema.locadora.service.IProdutoService;
 
 @Controller
 @RequestMapping("/locadora")
@@ -26,36 +24,30 @@ public class LocadoraController {
 
 	@Autowired
 	private IClienteService service;
-
-	@Autowired
-	private IFilmeService service1;
 	
 	@Autowired
-	private ISerieService service2;
+	private IProdutoService serviceP;
+	
 	
 	@GetMapping("/")
 	public String paginaInicial() {
-		return "paginaInicial";		
-		
+		return "paginaInicial";
 	}
-
-	@GetMapping("/adicionar")
+	
+	
+	@GetMapping("/adicionarCliente")
 	public String adicionarCliente() {
 		return "adicionarCliente";
 	}
 
-	@GetMapping("/adicionar")
-	public String adicionarFilme() {
-		return "adicionarFilme";
-	}
-
-	@GetMapping("/adicionar")
-	public String adicionarSerie() {
-		return "adicionarSerie";
+	@GetMapping("/adicionarProduto")
+	public String adicionarProduto() {
+		return "adicionarProduto";
 	}
 
 
-		@PostMapping("/adicionar")
+
+		@PostMapping("/adicionarCliente")
 		public String salvarCliente(@ModelAttribute Cliente cliente, Model model) {
 		// @ ModelAttribute vincula as informações do formulario a um objeto
 		service.salvarCliente(cliente);
@@ -68,25 +60,12 @@ public class LocadoraController {
 		return "redirect:listar";
 		}
 
-		@PostMapping("/adicionar")
-		public String salvarFilme(@ModelAttribute Filme filme, Model model) {
+		@PostMapping("/adicionarProduto")
+		public String salvarProduto(@ModelAttribute Produto produto, Model model) {
 		// @ ModelAttribute vincula as informações do formulario a um objeto
-		service1.salvarFilme(filme);
+		serviceP.salvarProduto(produto);
 		// salva novamente (redundante) retorna o id do nosso filme
-		Long id = service1.salvarFilme(filme).getId();
-		// mensagem para o usuario
-		String mensagem = "Salvo com o id: " + id + " com sucesso!";
-		// adicionando mensagem na resposta
-		model.addAttribute(mensagem);
-		return "redirect:listar";
-		}
-
-		@PostMapping("/adicionar")
-		public String salvarSerie(@ModelAttribute Serie serie, Model model) {
-		// @ ModelAttribute vincula as informações do formulario a um objeto
-		service2.salvarSerie(serie);
-		// salva novamente (redundante) retorna o id do nosso filme
-		Long id = service2.salvarSerie(serie).getId();
+		Long id = serviceP.salvarProduto(produto).getId();
 		// mensagem para o usuario
 		String mensagem = "Salvo com o id: " + id + " com sucesso!";
 		// adicionando mensagem na resposta
@@ -95,7 +74,7 @@ public class LocadoraController {
 		}
 
 
-	@PostMapping("/atualizar")
+	@PostMapping("/atualizarCliente")
 	public String atualizarCliente(@ModelAttribute Cliente cliente, RedirectAttributes attributes) {
 	service.atualizarCliente(cliente);
 	Long id = cliente.getId();
@@ -103,24 +82,17 @@ public class LocadoraController {
 	return "redirect:listar";
 	}
 
-	@PostMapping("/atualizar")
-	public String atualizarFilme(@ModelAttribute Filme filme, RedirectAttributes attributes) {
-	service1.atualizarFilme(filme);
-	Long id = filme.getId();
-	attributes.addAttribute("message", "Filme com o Id: " + id + " foi atualizado!");
-	return "redirect:listar";
-	}
 
-	@PostMapping("/atualizar")
-	public String atualizarSerie(@ModelAttribute Serie serie, RedirectAttributes attributes) {
-	service2.atualizarSerie(serie);
-	Long id = serie.getId();
+	@PostMapping("/atualizarProduto")
+	public String atualizarProduto(@ModelAttribute Produto produto, RedirectAttributes attributes) {
+	serviceP.atualizarProduto(produto);
+	Long id = produto.getId();
 	attributes.addAttribute("message", "Serie com o Id: " + id + " foi atualizado!");
 	return "redirect:listar";
 	}
 
 
-		@GetMapping("/editar")
+		@GetMapping("/editarCliente")
 		public String editarCliente(Model model, RedirectAttributes attributes, @RequestParam Long id) {
 		String page;
 		try {
@@ -136,14 +108,13 @@ public class LocadoraController {
 
 	}
 
-
-		@GetMapping("/editar")
-		public String editarFilme(Model model, RedirectAttributes attributes, @RequestParam Long id) {
+		@GetMapping("/editarProduto")
+		public String editarProduto(Model model, RedirectAttributes attributes, @RequestParam Long id) {
 		String page;
 		try {
-			Filme filme = service1.buscarFilme(id);
-			model.addAttribute("filme", filme);
-			page = "editarFilme";
+			Produto produto = serviceP.buscarProduto(id);
+			model.addAttribute("Produto", produto);
+			page = "editarProduto";
 		} catch (LocadoraNotFoundException e) {
 			e.printStackTrace();
 			attributes.addAttribute("message", e.getMessage());
@@ -154,23 +125,7 @@ public class LocadoraController {
 	}
 
 
-		public String editarSerie(Model model, RedirectAttributes attributes, @RequestParam Long id) {
-		String page;
-		try {
-			Serie serie = service2.buscarSerie(id);
-			model.addAttribute("serie", serie);
-			page = "editarSerie";
-		} catch (LocadoraNotFoundException e) {
-			e.printStackTrace();
-			attributes.addAttribute("message", e.getMessage());
-			page = "redirect:listar";
-		}
-		return page;
-
-	}
-
-
-	@GetMapping("/deletar")
+	@GetMapping("/deletarCliente")
 	public String deletarCliente(@RequestParam Long id, RedirectAttributes attributes) {
 		try {
 			service.deletarCliente(id);
@@ -182,23 +137,11 @@ public class LocadoraController {
 		return "redirect:listar";
 	}
 
-	@GetMapping("/deletar")
-	public String deletarFilme(@RequestParam Long id, RedirectAttributes attributes) {
-		try {
-			service1.deletarFilme(id);
-			attributes.addAttribute("message", "O Filme foi deletado, id: " + id);
-		} catch (LocadoraNotFoundException e) {
-			e.printStackTrace();
-			attributes.addAttribute("message", e.getMessage());
-		}
-		return "redirect:listar";
-	}
 
-
-	@GetMapping("/deletar")
-	public String deletarSerie(@RequestParam Long id, RedirectAttributes attributes) {
+	@GetMapping("/deletarProduto")
+	public String deletarProduto(@RequestParam Long id, RedirectAttributes attributes) {
 		try {
-			service2.deletarSerie(id);
+			serviceP.deletarProduto(id);
 			attributes.addAttribute("message", "O Serie foi deletado, id: " + id);
 		} catch (LocadoraNotFoundException e) {
 			e.printStackTrace();
@@ -208,7 +151,7 @@ public class LocadoraController {
 	}
 
 
-	@GetMapping("/listar")
+	@GetMapping("/listarCliente")
 	public String listarCliente(@RequestParam(value = "message", required = false) String message, Model model) {
 		// /user/lista? message=hello%world
 		// lista dos clientes
@@ -220,26 +163,15 @@ public class LocadoraController {
 	}
 
 
-	@GetMapping("/listar")
-	public String listarFilme(@RequestParam(value = "message", required = false) String message, Model model) {
-		// /user/lista? message=hello%world
-		// lista dos filmes
-		List<Filme> filme = service1.buscarTodosOsFilmes();
-		model.addAttribute("lista", filme);
-		// mensagem caso exista
-		model.addAttribute("messagem", message);
-		return "listarFilmes";
-	}
-
-	@GetMapping("/listar")
-	public String listarSerie(@RequestParam(value = "message", required = false) String message, Model model) {
+	@GetMapping("/listarProdutos")
+	public String listarProdutos(@RequestParam(value = "message", required = false) String message, Model model) {
 		// /user/lista? message=hello%world
 		// lista das Series
-		List<Serie> serie = service2.buscarTodasAsSeries();
-		model.addAttribute("lista", serie);
+		List<Produto> produto = serviceP.buscarTodosProdutos();
+		model.addAttribute("lista", produto);
 		// mensagem caso exista
 		model.addAttribute("messagem", message);
-		return "listarSeries";
+		return "listarProdutos";
 	}
 	
 	

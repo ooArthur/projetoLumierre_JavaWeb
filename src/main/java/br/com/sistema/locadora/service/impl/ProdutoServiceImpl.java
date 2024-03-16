@@ -8,33 +8,33 @@ import org.springframework.stereotype.Service;
 
 import br.com.sistema.locadora.exception.LocadoraNotFoundException;
 import br.com.sistema.locadora.models.Cliente;
-import br.com.sistema.locadora.models.Serie;
+import br.com.sistema.locadora.models.Produto;
 import br.com.sistema.locadora.repo.ClienteRepository;
-import br.com.sistema.locadora.repo.SerieRepository;
+import br.com.sistema.locadora.repo.ProdutoRepository;
 import br.com.sistema.locadora.service.IClienteService;
-import br.com.sistema.locadora.service.ISerieService;
+import br.com.sistema.locadora.service.IProdutoService;
 
 @Service
-public class SerieServiceImpl implements ISerieService {
+public class ProdutoServiceImpl implements IProdutoService {
 
 	@Autowired // Trás todas as informações da tabela
-	private SerieRepository repo;
+	private ProdutoRepository repo;
 	
 	@Override
-	public Serie salvarSerie(Serie serie) {
+	public Produto salvarProduto(Produto produto) {
 		// TODO Auto-generated method stub
-		return repo.save(serie);
+		return repo.save(produto);
 	}
 
 	@Override
-	public List<Serie> buscarTodasAsSeries() {
+	public List<Produto> buscarTodosProdutos() {
 		// TODO Auto-generated method stub
 		return repo.findAll();
 	}
 
 	@Override
-	public Serie buscarSerie(Long id) {
-		Optional<Serie> opt = repo.findById(id);
+	public Produto buscarProduto(Long id) {
+		Optional<Produto> opt = repo.findById(id);
 		if(opt.isPresent()) {
 			return opt.get();
 		} else {
@@ -43,18 +43,17 @@ public class SerieServiceImpl implements ISerieService {
 	}
 
 	@Override
-	public void deletarSerie(Long id) {
+	public void deletarProduto(Long id) {
 		// TODO Auto-generated method stub
-		repo.delete(buscarSerie(id));
+		repo.delete(buscarProduto(id));
 		
+	}
+	
+	@Override
+	public void atualizarProduto(Produto produto) {
+		repo.save(produto);
 	}
 
-	@Override
-	public void atualizarSerie(Serie serie) {
-		// TODO Auto-generated method stub
-		repo.save(serie);
-		
-	}
 }
 
 
