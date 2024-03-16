@@ -17,12 +17,12 @@ public class Produto {
 	@GeneratedValue
 	private Long id;
 	
-	private String tituloSerie;
+	private String titulo;
 	private String genero;
 	private Integer anoLancamento;
 	private String avaliacao;
 	private BigDecimal valorAluguel;
 	private String duracao;
-	private Integer numeroTemporadas;
+	private String tipo;
 	
 }

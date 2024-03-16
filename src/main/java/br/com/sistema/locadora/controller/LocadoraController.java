@@ -151,8 +151,8 @@ public class LocadoraController {
 	}
 
 
-	@GetMapping("/listarCliente")
-	public String listarCliente(@RequestParam(value = "message", required = false) String message, Model model) {
+	@GetMapping("/listarClientes")
+	public String listarClientes(@RequestParam(value = "message", required = false) String message, Model model) {
 		// /user/lista? message=hello%world
 		// lista dos clientes
 		List<Cliente> cliente = service.buscarTodosOsClientes();
@@ -166,12 +166,24 @@ public class LocadoraController {
 	@GetMapping("/listarProdutos")
 	public String listarProdutos(@RequestParam(value = "message", required = false) String message, Model model) {
 		// /user/lista? message=hello%world
-		// lista das Series
+		// lista dos Produtos
 		List<Produto> produto = serviceP.buscarTodosProdutos();
 		model.addAttribute("lista", produto);
 		// mensagem caso exista
 		model.addAttribute("messagem", message);
 		return "listarProdutos";
+	}
+	
+	
+	@GetMapping("/cliente/listarProdutos")
+	public String visualizarProdutos(@RequestParam(value = "message", required = false) String message, Model model) {
+		// /user/lista? message=hello%world
+		// lista dos Produtos
+		List<Produto> produto = serviceP.buscarTodosProdutos();
+		model.addAttribute("lista", produto);
+		// mensagem caso exista
+		model.addAttribute("messagem", message);
+		return "visualizarProdutos";
 	}
 	
 	

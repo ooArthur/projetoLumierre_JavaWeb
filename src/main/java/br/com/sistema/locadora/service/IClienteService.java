@@ -2,6 +2,7 @@ package br.com.sistema.locadora.service;
 
 import java.util.List;
 
+import br.com.sistema.locadora.models.Aluguel;
 import br.com.sistema.locadora.models.Cliente;
 
 public interface IClienteService {
