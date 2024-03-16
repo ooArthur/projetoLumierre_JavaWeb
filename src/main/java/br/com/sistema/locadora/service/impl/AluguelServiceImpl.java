@@ -10,11 +10,12 @@ public class AluguelServiceImpl implements IAluguelService {
 	
 	@Autowired
 	public AluguelRepository repo;
-
+	
 	@Override
-	public Aluguel calcularTotal(Aluguel aluguel) {
-		// TODO Auto-generated method stub
+	public Aluguel salvarAluguel(Aluguel aluguel) {
 		
-		return null;
+		return repo.save(aluguel);
 	}
+	
+
 }

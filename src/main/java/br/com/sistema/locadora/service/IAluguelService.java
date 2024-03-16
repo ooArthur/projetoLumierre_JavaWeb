@@ -4,5 +4,5 @@ import br.com.sistema.locadora.models.Aluguel;
 
 public interface IAluguelService {
 
-	public Aluguel calcularTotal(Aluguel aluguel);
+	public Aluguel salvarAluguel(Aluguel aluguel);
 }
