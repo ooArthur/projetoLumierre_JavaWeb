@@ -20,9 +20,9 @@ public class Produto {
 	private String titulo;
 	private String genero;
 	private Integer anoLancamento;
-	private String avaliacao;
+	private String description;
 	private BigDecimal valorAluguel;
 	private String duracao;
-	private String tipo;
+	private String capa;
 	
 }
