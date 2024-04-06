@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="https://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Movie</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <main>
+        <section class="container">
+            <div class="container-menu">
+                <div class="logo">
+                    <img src="/images/logo.svg" alt="">
+                </div>
+                <div class="title">
+                    <h1>Selecione uma das opções abaixo:</h1>
+                </div>
+                <div class="options">
+                    <a th:href="@{/locadora/dashboard/addMovie}"><img src="/images/icon-filme.svg" alt="">Adicionar filme</a>
+                    <a th:href="@{/locadora/dashboard/listMovie}" id="list-movie"><img src="/images/icon-busca.svg" alt="">Listar filmes</a>
+                    <a th:href="@{/locadora/dashboard/addUser}" id="add-user"><img src="/images/icon-user.svg" alt="">Adicionar usuário</a>
+                    <a th:href="@{/locadora/dashboard/listUser}" id="list-user"><img src="/images/icon-buser.svg" alt="">Listar usuários</a>
+                    <a th:href="@{/locadora/}"><img src="/images/icon-sair.svg" alt="">Sair</a>
+                </div>
+            </div>
+            
+            <div class="add">
+                <div class="titleadd">
+                    <div class="image">
+                    <img src="/images/icon-filme.svg" alt="" id="img-title">
+                </div>
+                <div class="title-add">
+                    <h1>Adicionar filme</h1>
+                </div>
+                </div>
+                
+                <div class="form">
+                    <form th:action="@{/locadora/dashboard/addMovie}" method="post" id="locadoraFormMovie">
+                        <label for="">Título:</label>
+                        <input type="text" name="title" id="title" placeholder="Digite o título do filme">
+                        
+                        <label for="">Gênero:</label>
+                        <select name="category" id="category">
+                            <option value="" disabled selected hidden>Selecione a categoria</option>
+                            <option value="action">Ação</option>
+                            <option value="adventure">Aventura</option>
+                            <option value="comedy">Comédia</option>
+                            <option value="comromance">Comédia Romântica</option>
+                            <option value="documentary">Documentário</option>
+                            <option value="drama">Drama</option>
+                            <option value="fantasy">Fantasia</option>
+                            <option value="scifi">Ficção Científica</option>
+                            <option value="animation">Animação</option>
+                            <option value="musical">Musical</option>
+                            <option value="romance">Romance</option>
+                            <option value="horror">Terror</option>
+                            <option value="thriller">Suspense</option>
+                        </select>
+        
+                        <label for="">Ano de lançamento:</label>
+                        <input type="number" name="date" id="date" placeholder="Digite o ano de lançamento">
+                        
+                        <label for="">Sinopse:</label>
+                        <input type="text" name="sinopse" id="sinopse" placeholder="Digite a sinopse do filme">
+        
+                        <div class="double-inputs">
+                            <div class="input1">
+                            <label for="">Valor de aluguel:</label>
+                            <input type="text" name="price" id="price" placeholder="Valor do aluguel semanal">
+                            </div>
+                            <div class="input2">
+                            <label for="">Duração:</label>
+                            <input type="text" name="duration" id="duration" placeholder="Duração | ex.: 105">
+                            </div>
+                        </div>
+        
+                        <label for="">Capa:</label>
+                        <input type="url" name="capa" id="capa" placeholder="Digite a URL da capa desejada">
+        
+                        <button id="btn-add" type="submit">Adicionar</button>
+                    </form>
+                </div>
+                </div>
+
+        </section>
+
+
+    </main>
+</body>
+</html>

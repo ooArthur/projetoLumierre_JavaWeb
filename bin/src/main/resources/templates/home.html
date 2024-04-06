@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage | Lumierré</title>
+    
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="shortcut icon" href="../images/logo-web.svg" type="">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <section class="cont-intro">
+            <div class="intro">
+                <div class="title-intro">
+                    <div class="logo">
+                        <img src="../static/images/logo.svg" alt="">
+                    </div>
+                    <div class="text-intro">
+                        <p>Transforme suas noites em momentos cinematográficos inesquecíveis.</p>
+                    </div>
+                    <div class="btn-intro">
+                        <a href="" th:href="@{/locadora/home}">VER FILMES</a>
+                        <a href="" th:href="@{/locadora/dashboard}">DASHBOARD</a>
+                    </div>
+                </div>
+                <div class="character-intro">
+                    <img id="avatar" src="../static/images/avatar.svg" alt="">
+                    <img class="imagem1" src="../static/images/meialua.svg" alt="">
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

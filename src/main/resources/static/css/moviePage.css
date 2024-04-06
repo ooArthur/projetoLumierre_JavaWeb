@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    color: white;
+  }
+
+body {
+   background: linear-gradient(#022859, #021D40) no-repeat;
+}
+
+.Header {
+    display: flex;
+}
+
+.icone {
+    width: 0 auto;
+    height: 2vw;
+}
+
+.voltar {
+    position: absolute;
+    margin-left: 5vw;
+    margin-top: 5vw;
+}
+
+.Header a {
+    position: absolute;
+    margin-left: 7vw;
+    margin-top: 5vw;
+    text-decoration: none;
+    font-size: 1.5vw;
+}
+
+.descricao {
+    display: flex;
+    margin: 5vw;
+}
+
+.banner-img img {
+    width: 0 auto;
+    height: 25vw;
+}
+
+.Texto-filme {
+    margin: 4vw;
+}
+
+.title p {
+    font-size: 3vw;
+    margin-bottom: 1vw;
+}
+
+.info {
+    display: flex;
+}
+
+.info p {
+    font-size: 1.2vw;
+    margin: 0 2vw 2vw 0vw;
+    opacity: 70%;
+}
+
+.info p:not(:first-child) {
+    margin-left: 8vw;
+}
+
+.sobre p {
+    font-size: 1.8vw;
+}

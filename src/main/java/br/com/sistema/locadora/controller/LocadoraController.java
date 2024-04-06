@@ -30,7 +30,7 @@ public class LocadoraController {
 
 	// Visualizando a Página Inicial
 	@GetMapping("/")
-	public String paginaInicial() {
+	public String home() {
 		return "home";
 	}
 	
@@ -45,29 +45,31 @@ public class LocadoraController {
 	public String addUser() {
 		return "addUser";
 	}
+	
+	// Adicionando Usuário (POST) 
+			@PostMapping("/dashboard/addUser")
+			public String salvarCliente(@ModelAttribute Cliente cliente, Model model) {
+				// @ ModelAttribute vincula as informações do formulario a um objeto
+				service.salvarCliente(cliente);
+				// salva novamente (redundante) retorna o id do nosso cliente
+				Long id = service.salvarCliente(cliente).getId();
+				// mensagem para o usuario
+				String mensagem = "Salvo com o id: " + id + " com sucesso!";
+				// adicionando mensagem na resposta
+				model.addAttribute(mensagem);
+				return "redirect:dashboard";
+			}
 
+			
+			
 	// Visualizando a Página de Adicionar Filme do Dashboard
 	@GetMapping("/dashboard/addMovie")
 	public String addMovie() {
 		return "addMovie";
 	}
 
-		// Adicionando Usuário (POST) 
-		@PostMapping("/addUser")
-		public String salvarCliente(@ModelAttribute Cliente cliente, Model model) {
-			// @ ModelAttribute vincula as informações do formulario a um objeto
-			service.salvarCliente(cliente);
-			// salva novamente (redundante) retorna o id do nosso cliente
-			Long id = service.salvarCliente(cliente).getId();
-			// mensagem para o usuario
-			String mensagem = "Salvo com o id: " + id + " com sucesso!";
-			// adicionando mensagem na resposta
-			model.addAttribute(mensagem);
-			return "redirect:dashboard";
-		}
-
 		// Adicionando Filme (POST)
-		@PostMapping("/addMovie")
+		@PostMapping("/dashboard/addMovie")
 		public String salvarProduto(@ModelAttribute Produto produto, Model model) {
 			// @ ModelAttribute vincula as informações do formulario a um objeto
 			serviceP.salvarProduto(produto);
