@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.sistema.locadora.exception.LocadoraNotFoundException;
-import br.com.sistema.locadora.models.Aluguel;
 import br.com.sistema.locadora.models.Cliente;
 import br.com.sistema.locadora.models.Produto;
-import br.com.sistema.locadora.service.IAluguelService;
 import br.com.sistema.locadora.service.IClienteService;
 import br.com.sistema.locadora.service.IProdutoService;
 
@@ -30,29 +28,32 @@ public class LocadoraController {
 	@Autowired
 	private IProdutoService serviceP;
 
-	@Autowired
-	private IAluguelService serviceA;
-
-	// Visualizando a Página Inicial - ADM
+	// Visualizando a Página Inicial
 	@GetMapping("/")
 	public String paginaInicial() {
-		return "paginaInicial";
+		return "home";
+	}
+	
+	// Visualizando a Página de Dashboard
+	@GetMapping("/dashboard")
+	public String dashboard() {
+		return "dashboard";
 	}
 
-	// Visualizando a Página de Adicionar Cliente - ADM
-	@GetMapping("/adicionarCliente")
-	public String adicionarCliente() {
-		return "adicionarCliente";
+	// Visualizando a Página de Adicionar Usuário do Dashboard
+	@GetMapping("/dashboard/addUser")
+	public String addUser() {
+		return "addUser";
 	}
 
-	// Visualizando a Página de Adicionar Produto - ADM
-	@GetMapping("/adicionarProduto")
-	public String adicionarProduto() {
-		return "adicionarProduto";
+	// Visualizando a Página de Adicionar Filme do Dashboard
+	@GetMapping("/dashboard/addMovie")
+	public String addMovie() {
+		return "addMovie";
 	}
 
-		// Adicionando Cliente (POST) - ADM
-		@PostMapping("/adicionarCliente")
+		// Adicionando Usuário (POST) 
+		@PostMapping("/addUser")
 		public String salvarCliente(@ModelAttribute Cliente cliente, Model model) {
 			// @ ModelAttribute vincula as informações do formulario a um objeto
 			service.salvarCliente(cliente);
@@ -62,11 +63,11 @@ public class LocadoraController {
 			String mensagem = "Salvo com o id: " + id + " com sucesso!";
 			// adicionando mensagem na resposta
 			model.addAttribute(mensagem);
-			return "redirect:listar";
+			return "redirect:dashboard";
 		}
 
-		// Adicionando Produto (POST) - ADM
-		@PostMapping("/adicionarProduto")
+		// Adicionando Filme (POST)
+		@PostMapping("/addMovie")
 		public String salvarProduto(@ModelAttribute Produto produto, Model model) {
 			// @ ModelAttribute vincula as informações do formulario a um objeto
 			serviceP.salvarProduto(produto);
@@ -76,89 +77,89 @@ public class LocadoraController {
 			String mensagem = "Salvo com o id: " + id + " com sucesso!";
 			// adicionando mensagem na resposta
 			model.addAttribute(mensagem);
-			return "redirect:listar";
+			return "redirect:dashboard";
 		}
 
-		//Atualizando Cliente (POST) - ADM
-		@PostMapping("/atualizarCliente")
+		//Atualizando Usuário (POST)
+		@PostMapping("/updateUser")
 		public String atualizarCliente(@ModelAttribute Cliente cliente, RedirectAttributes attributes) {
 			service.atualizarCliente(cliente);
 			Long id = cliente.getId();
-			attributes.addAttribute("message", "Cliente com o Id: " + id + " foi atualizado!");
-			return "redirect:listar";
+			attributes.addAttribute("message", "User com o Id: " + id + " foi atualizado!");
+			return "redirect:dashboard";
 		}
 
-		//Atualizando Produto (POST) - ADM
-		@PostMapping("/atualizarProduto")
+		//Atualizando Filme (POST) 
+		@PostMapping("/updateMovie")
 		public String atualizarProduto(@ModelAttribute Produto produto, RedirectAttributes attributes) {
 			serviceP.atualizarProduto(produto);
 			Long id = produto.getId();
-			attributes.addAttribute("message", "Serie com o Id: " + id + " foi atualizado!");
-			return "redirect:listar";
+			attributes.addAttribute("message", "Filme com o Id: " + id + " foi atualizado!");
+			return "redirect:dashboard";
 		}
 
-	//Visualizando a Página de Editar Cliente - ADM
-	@GetMapping("/editarCliente")
+	//Visualizando a Página de Editar Usuário
+	@GetMapping("/dashboard/editUser")
 	public String editarCliente(Model model, RedirectAttributes attributes, @RequestParam Long id) {
 		String page;
 		try {
 			Cliente cliente = service.buscarCliente(id);
 			model.addAttribute("cliente", cliente);
-			page = "editarCliente";
+			page = "editUser";
 		} catch (LocadoraNotFoundException e) {
 			e.printStackTrace();
 			attributes.addAttribute("message", e.getMessage());
-			page = "redirect:listar";
+			page = "redirect:listUser";
 		}
 		return page;
 
 	}
 
-	//Visualizando a Página de Editar Produto - ADM
-	@GetMapping("/editarProduto")
+	//Visualizando a Página de Editar Filme
+	@GetMapping("/dashboard/editMovie")
 	public String editarProduto(Model model, RedirectAttributes attributes, @RequestParam Long id) {
 		String page;
 		try {
 			Produto produto = serviceP.buscarProduto(id);
 			model.addAttribute("Produto", produto);
-			page = "editarProduto";
+			page = "editMovie";
 		} catch (LocadoraNotFoundException e) {
 			e.printStackTrace();
 			attributes.addAttribute("message", e.getMessage());
-			page = "redirect:listar";
+			page = "redirect:listMovie";
 		}
 		return page;
 
 	}
 	
-	//Visualizando a Página de Deletar Cliente - ADM
-	@GetMapping("/deletarCliente")
+	//Visualizando a Página de Deletar Usuário
+	@GetMapping("/deleteUser")
 	public String deletarCliente(@RequestParam Long id, RedirectAttributes attributes) {
 		try {
 			service.deletarCliente(id);
-			attributes.addAttribute("message", "O Cliente foi deletado, id: " + id);
+			attributes.addAttribute("message", "O Usuário foi deletado, id: " + id);
 		} catch (LocadoraNotFoundException e) {
 			e.printStackTrace();
 			attributes.addAttribute("message", e.getMessage());
 		}
-		return "redirect:listar";
+		return "redirect:listUser";
 	}
 
-	//Visualizando a Página de Deletar Produto - ADM
-	@GetMapping("/deletarProduto")
+	//Visualizando a Página de Deletar Filme
+	@GetMapping("/deleteMovie")
 	public String deletarProduto(@RequestParam Long id, RedirectAttributes attributes) {
 		try {
 			serviceP.deletarProduto(id);
-			attributes.addAttribute("message", "O Serie foi deletado, id: " + id);
+			attributes.addAttribute("message", "O Filme foi deletado, id: " + id);
 		} catch (LocadoraNotFoundException e) {
 			e.printStackTrace();
 			attributes.addAttribute("message", e.getMessage());
 		}
-		return "redirect:listar";
+		return "redirect:listMovie";
 	}
 
-	//Visualizando a Página de Listar Clientes - ADM
-	@GetMapping("/listarClientes")
+	//Visualizando a Página de Listar Usuários do Dashboard
+	@GetMapping("/dashboard/listUser")
 	public String listarClientes(@RequestParam(value = "message", required = false) String message, Model model) {
 		// /user/lista? message=hello%world
 		// lista dos clientes
@@ -166,11 +167,11 @@ public class LocadoraController {
 		model.addAttribute("lista", cliente);
 		// mensagem caso exista
 		model.addAttribute("messagem", message);
-		return "listarClientes";
+		return "listUser";
 	}
 
-	//Visualizando a Página de Listar Produtos - ADM
-	@GetMapping("/listarProdutos")
+	//Visualizando a Página de Listar Filmes do Dashboard
+	@GetMapping("/dashboard/listMovie")
 	public String listarProdutos(@RequestParam(value = "message", required = false) String message, Model model) {
 		// /user/lista? message=hello%world
 		// lista dos Produtos
@@ -178,13 +179,11 @@ public class LocadoraController {
 		model.addAttribute("lista", produto);
 		// mensagem caso exista
 		model.addAttribute("messagem", message);
-		return "listarProdutos";
+		return "listMovie";
 	}
-	
-	
 
-	//Visualizar a Página de Lista de Produtos - Cliente
-	@GetMapping("/cliente/listarProdutos")
+	//Visualizar a Página de Lista de Produtos do User
+	@GetMapping("/home")
 	public String visualizarProdutos(@RequestParam(value = "message", required = false) String message, Model model) {
 		// /user/lista? message=hello%world
 		// lista dos Produtos
@@ -192,38 +191,7 @@ public class LocadoraController {
 		model.addAttribute("lista", produto);
 		// mensagem caso exista
 		model.addAttribute("messagem", message);
-		return "visualizarProdutos";
-	}
-
-	//Visualizar a Página de Produto Único (Página de Aluguel) - Cliente
-	@GetMapping("/alugarProduto")
-	public String visualizarUnicoProduto(Model model, RedirectAttributes attributes, @RequestParam Long id) {
-		String page;
-		try {
-			Produto produto = serviceP.buscarProduto(id);
-			model.addAttribute("Produto", produto);
-			page = "";
-		} catch (LocadoraNotFoundException e) {
-			e.printStackTrace();
-			attributes.addAttribute("message", e.getMessage());
-			page = "redirect:listar";
-		}
-		return page;
-
-	}
-
-	//Adicionando um Aluguel (POST) - Cliente
-	@PostMapping("/alugarProduto")
-	public String alugarProduto(@ModelAttribute Aluguel aluguel, Model model) {
-		// @ ModelAttribute vincula as informações do formulario a um objeto
-		serviceA.salvarAluguel(aluguel);
-		// salva novamente (redundante) retorna o id do nosso filme
-		Long id = serviceA.salvarAluguel(aluguel).getId();
-		// mensagem para o usuario
-		String mensagem = "Salvo com o id: " + id + " com sucesso!";
-		// adicionando mensagem na resposta
-		model.addAttribute(mensagem);
-		return "redirect:listar";
+		return "homeCliente";
 	}
 
 }
