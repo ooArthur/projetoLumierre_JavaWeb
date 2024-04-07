@@ -1,5 +1,7 @@
 package br.com.sistema.locadora.models;
 
+import java.sql.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -17,7 +19,7 @@ public class Cliente {
 	private String nome;
 	private String email;
 	private String password;
-	private String endereco;
-	private String cpf;
+	private String nivelPermissao;
+	private Date dataNascimento;
 	
 }

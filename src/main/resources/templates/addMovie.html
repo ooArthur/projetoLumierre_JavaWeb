@@ -39,40 +39,40 @@
                 <div class="form">
                     <form th:action="@{/locadora/dashboard/addMovie}" method="post" id="locadoraFormMovie">
                         <label for="">Título:</label>
-                        <input type="text" name="title" id="title" placeholder="Digite o título do filme">
+                        <input type="text" name="titulo" id="title" placeholder="Digite o título do filme">
                         
                         <label for="">Gênero:</label>
-                        <select name="category" id="category">
+                        <select name="genero" id="category">
                             <option value="" disabled selected hidden>Selecione a categoria</option>
-                            <option value="action">Ação</option>
-                            <option value="adventure">Aventura</option>
-                            <option value="comedy">Comédia</option>
-                            <option value="comromance">Comédia Romântica</option>
-                            <option value="documentary">Documentário</option>
-                            <option value="drama">Drama</option>
-                            <option value="fantasy">Fantasia</option>
-                            <option value="scifi">Ficção Científica</option>
-                            <option value="animation">Animação</option>
-                            <option value="musical">Musical</option>
-                            <option value="romance">Romance</option>
-                            <option value="horror">Terror</option>
-                            <option value="thriller">Suspense</option>
+                            <option value="Action">Ação</option>
+                            <option value="Adventure">Aventura</option>
+                            <option value="Comedy">Comédia</option>
+                            <option value="Comromance">Comédia Romântica</option>
+                            <option value="Documentary">Documentário</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Fantasy">Fantasia</option>
+                            <option value="Scifi">Ficção Científica</option>
+                            <option value="Animation">Animação</option>
+                            <option value="Musical">Musical</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Horror">Terror</option>
+                            <option value="Thriller">Suspense</option>
                         </select>
         
                         <label for="">Ano de lançamento:</label>
-                        <input type="number" name="date" id="date" placeholder="Digite o ano de lançamento">
+                        <input type="number" name="anoLancamento" id="date" placeholder="Digite o ano de lançamento">
                         
                         <label for="">Sinopse:</label>
-                        <input type="text" name="sinopse" id="sinopse" placeholder="Digite a sinopse do filme">
+                        <input type="text" name="description" id="sinopse" placeholder="Digite a sinopse do filme">
         
                         <div class="double-inputs">
                             <div class="input1">
                             <label for="">Valor de aluguel:</label>
-                            <input type="text" name="price" id="price" placeholder="Valor do aluguel semanal">
+                            <input type="text" name="valorAluguel" id="price" placeholder="Valor do aluguel semanal">
                             </div>
                             <div class="input2">
                             <label for="">Duração:</label>
-                            <input type="text" name="duration" id="duration" placeholder="Duração | ex.: 105">
+                            <input type="text" name="duracao" id="duration" placeholder="Duração | ex.: 105">
                             </div>
                         </div>
         

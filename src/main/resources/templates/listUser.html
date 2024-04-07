@@ -48,16 +48,20 @@
                         <th>Editar</th>
                         <th>Deletar</th>
                     </tr>
-                    <tr class="users">
+                    <tr class="users" th:each="ob:${lista}">
                         <span></span>
-                        <td>1</td>
-                        <td>Sarah Christine</td>
-                        <td>sarinhalllz@gmail.com</td>
-                        <td>sasa123</td>
-                        <td>25-04-2007</td>
-                        <td>admin</td>
-                        <td><button class="btn-edit">Editar</button></td>
-                        <td><button class="btn-delete">Deletar</button></td>
+                        <td th:text="${ob.id}"></td>
+                        <td th:text="${ob.nome}"></td>
+                        <td th:text="${ob.email}"></td>
+                        <td th:text="${ob.password}"></td>
+                        <td th:text="${ob.dataNascimento}"></td>
+                        <td th:text="${ob.nivelPermissao}"></td>
+                        <td>
+                        <a th:href="@{/locadora/dashboard/editUser(id=${ob.id})}"><button class="btn-edit">Editar</button></a>
+                        </td>
+                        <td>
+                        <a th:href="@{/locadora/dashboard/deleteUser(id=${ob.id})}"><button class="btn-delete">Deletar</button></a>
+                        </td>
                     </tr>
                 </table>
             </div>

@@ -38,14 +38,14 @@
                     </div>
                 </div>
 
-                <div class="cards-list" th:each="ob:${lista}">
-                    <div class="cards" >
+                <div class="cards-list">
+                    <div class="cards" th:each="ob:${lista}" >
                         <div class="movie-img">
                             <img class="cover" th:src="${ob.capa}" alt="" srcset="">
                         </div>
                         <div class="movie-info">
                             <p style="font-weight: bold">Título: <span style="font-weight: 500" th:text="${ob.titulo}"></span></p>
-                            <p><span style="font-weight: bold">Gênero:</span>Drama e Crime</p>
+                            <p style="font-weight: bold">Gênero: <span style="font-weight: 500" th:text="${ob.genero}"></span></p>
                             <p style="font-weight: bold">
 								Descrição: 
 								<span style="font-weight: 500" th:text="${ob.description}"></span>

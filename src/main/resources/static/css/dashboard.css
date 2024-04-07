@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Jost", sans-serif;
+    text-decoration: none;
 }
 
 body{
@@ -19,7 +20,7 @@ body{
     flex-direction: column;
     align-items: center;
     background: #022859;
-    min-width: 30%;
+    min-width: 25%;
     height: 100vh;
     color: #FFF;
     gap: 7%;
@@ -76,9 +77,12 @@ body{
 
 .add{
     display: flex;
-    margin: 0 auto;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+    width: calc(100% - 25%);
+    margin-top: 5%;
 }
 
 .titleadd{
@@ -167,10 +171,11 @@ input{
 /* ========== Tabela da listagem ========== */
 
 .list-users {
-    width: 65vw;
     display: flex;
     flex-direction: column;
-    margin-left: 33%;
+    align-items: center;
+    margin-left: 25%;
+    width: calc(100% - 25%);
     margin-top: 5%;
 }
 
@@ -185,13 +190,17 @@ input{
 }
 
 .table-users {
-    width: 100%;
+    width: 90%;
     background: #022859;
 }
 
 .list-title {
-    color: #FFFFFF;
+    color: #FFF;
     font-size: 0.9vw;
+}
+
+.list-title th{
+    padding: 1vh;
 }
 
 .users {
@@ -214,6 +223,11 @@ table, th, td {
     border-radius: 10px;
     padding: 1vh 2vw;
     cursor: pointer;
+    color: #000000;
+}
+
+.btn-edit a {
+    color: #000000;
 }
 
 /* =========== Listar filmes ============== */
@@ -229,8 +243,8 @@ table, th, td {
     align-items: center;
     font-size: 30px;
     gap: 1vw;
-    width: calc(100% - 30%);
-    margin-left: 30%;
+    width: calc(100% - 25%);
+    margin-left: 25%;
     text-align: center;
 }
 
@@ -238,8 +252,8 @@ table, th, td {
     display: grid;
     gap: .5vw;
     grid-template-columns: 1fr 1fr;
-    margin-left: 30%;
-    width: calc(100% - 30%);
+    margin-left: 25%;
+    width: calc(100% - 25%);
 }
 
 .cards{
@@ -248,25 +262,72 @@ table, th, td {
 }
 
 .movie-img img{
-    height: 45vh;
+    height: 50vh;
 }
 
 .movie-info{
     background: #023373;
     border-radius: 0 15px 15px 0;
-    padding: 10px 15px;
-    height: 45vh;
+    padding: 20px 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 0.5vh;
+    height: 50vh;
 }
 
 .movie-info p{
     color: #FFF;
-    font-size: .90vw;
+    font-size: .9vw;
 }
 
 .cover{
     border-radius: 15px 0 0 15px;
+}
+
+/* =========== Editar usuários ============== */
+
+.container-editUs {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.voltar a img{
+    margin: 2.4vw 4.5vw;
+}
+
+.content-table {
+    margin: 0vw 4.5vw;
+    max-width: 100%;
+}
+
+.tb-edt {
+    width: 100%;
+}
+
+.edt-frm {
+    margin-top: 6vh;
+    max-width: 50%;
+}
+
+/* =========== Editar filmes ============== */
+
+.container-editMo {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-edt {
+    max-width: 45%;
+}
+
+.edt {
+    gap: 2vh;
+}
+
+.edt p {
+    font-size: 1vw;
 }

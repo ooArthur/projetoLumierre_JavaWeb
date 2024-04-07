@@ -38,23 +38,23 @@
                 <div class="form">
                     <form th:action="@{/locadora/dashboard/addUser}" method="post" id="locadoraFormUser">
                         <label for="" >Nome:</label>
-                        <input type="text" name="title" id="title" placeholder="Digite seu nome">
+                        <input type="text" name="nome" id="title" placeholder="Digite seu nome">
           
                         <label for="">E-mail:</label>
                         <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
           
                         <label for="">Senha:</label>
-                        <input type="text" name="senha" id="senha" placeholder="Digite sua senha">
+                        <input type="password" name="password" id="senha" placeholder="Digite sua senha">
                         
                         <label for="">Nível de permissão:</label>
-                        <select name="category" id="category">
+                        <select name="nivelPermissao" id="category">
                             <option value="" disabled selected hidden>Selecione o nível de permissão</option>
-                            <option value="adm">Administrador</option>
-                            <option value="client">Cliente</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Cliente">Cliente</option>
                         </select>
           
                         <label for="">Data de nascimento:</label>
-                        <input type="date" name="date" id="date">
+                        <input type="date" name="dataNascimento" id="date">
                          
                         <button id="btn-add" type="submit">Adicionar</button>
                     </form>
