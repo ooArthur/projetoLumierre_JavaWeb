@@ -71,32 +71,11 @@
 
                 <div class="fileira">
 
-                    <div class="card-filmes">
-                        <a href="moviePage.html"><img src="../images/kungfupanda.svg" alt=""></a>
-                        <p class="filme1">Kung Fu Panda 4</p>
+                    <div class="card-filmes" th:each="ob:${lista}">
+                        <a th:href="@{/locadora/home/moviePage(id=${ob.id})}"><img th:src="${ob.capa}" alt=""></a>
+                        <p class="filme1" th:text="${ob.titulo}"></p>
                     </div>
 
-                    <div class="card-filmes">
-                        <a href=""><img src="../images/divertidamente2.svg" alt=""></a>
-                        <p class="filme1">Divertidamente 2</p>
-                    </div>
-                    
-                    <div class="card-filmes">
-                        <a href=""><img src="../images/todosmenosvoce.svg" alt=""></a>
-                        <p class="filme1">Todos menos você</p>
-                    </div>
-
-                    <div class="card-filmes">
-                        <a href=""><img src="../images/Oppenheimer2.svg" alt=""></a>
-                        <p class="filme1">Oppenheimer</p>
-                    </div>
-                    
-                    <div class="card-filmes">
-                        <a href=""><img src="../images/pobrescriaturas.svg" alt=""></a>
-                        <p class="filme1">Pobres Criaturas</p>
-                    </div>
-
-                    
                 </div>
 
             </section>

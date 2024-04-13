@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../css/moviePage.css">
-    <link rel="stylesheet" href="../css/homeCliente.css">
-    <link rel="shortcut icon" href="../images/logo-web.svg" type="">
+    <link rel="stylesheet" href="/css/moviePage.css">
+    <link rel="stylesheet" href="/css/homeCliente.css">
+    <link rel="shortcut icon" href="/images/logo-web.svg" type="">
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <title>Filme | Lumierré</title>
@@ -16,14 +16,14 @@
         <section class="Header">
 
             <div class="voltar"> 
-                <img class="icone" src="../images/voltar.svg" alt="">
+                <img class="icone" src="/images/voltar.svg" alt="">
                 
             </div>
 
-            <a href="homeCliente.html">Voltar</a>
+            <a th:href="@{/locadora/home}">Voltar</a>
 
             <div class="logo">
-                <img src="../images/logo.svg" alt="">
+                <img src="/images/logo.svg" alt="">
             </div>
 
         </section>
@@ -31,21 +31,21 @@
         <section class="descricao">
 
             <div class="banner-img">
-                <img src="../images/kungfupanda.svg" alt="">
+                <img th:src="${produto.capa}" alt="">
             </div>
 
             <div class="Texto-filme">
                 <div class="title">
-                    <p>Kung Fu Panda 4 </h2>
+                    <p th:text="${produto.titulo}"></p>
                 </div>
                 
                 <div class="info">
-                    <p>Animação</p>
-                    <p>94min</p>
+                    <p th:text="${produto.genero}"></p>
+                    <p><span th:text="${produto.duracao}"> </span> minutos</p> 
                 </div>
 
                 <div class="sobre">
-                    <p>Po segue sua jornada para se tornar o Líder Espiritual, precisando escolher um novo Dragão Guerreiro. No entanto, uma nova ameaça, representada por uma vilã chamada Camaleoa, surge no meio do caminho, o que pode trazer de volta inimigos do passado.</p>
+                    <p th:text="${produto.description}"></p> 
                 </div>
                 
             </div>
@@ -55,8 +55,8 @@
             <div>
                 <hr>
                 <div class="direitos">
-                    <img class="logo-footer" src="../images//logo.svg" alt="">
-                    <img class="copyright" src="../images/copyrights.svg" alt="">
+                    <img class="logo-footer" src="/images//logo.svg" alt="">
+                    <img class="copyright" src="/images/copyrights.svg" alt="">
                     <p>2024 | Direitos autorais</p>
                 </div>
                 

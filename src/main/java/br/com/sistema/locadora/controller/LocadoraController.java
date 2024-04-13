@@ -193,5 +193,21 @@ public class LocadoraController {
 		model.addAttribute("messagem", message);
 		return "homeCliente";
 	}
+	
+	@GetMapping("/home/moviePage")
+	public String moviePage(Model model, RedirectAttributes attributes, @RequestParam Long id) {
+		String page;
+		try {
+			Produto produto = serviceP.buscarProduto(id);
+			model.addAttribute("produto", produto);
+			page = "moviePage";
+		} catch (LocadoraNotFoundException e) {
+			e.printStackTrace();
+			attributes.addAttribute("message", e.getMessage());
+			page = "redirect:home";
+		}
+		return page;
+
+	}
 
 }
