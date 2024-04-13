@@ -25,6 +25,7 @@ public class Produto {
 	private String description;
 	private BigDecimal valorAluguel;
 	private String duracao;
+	@Column(length = 12500)
 	private String capa;
 	
 }
