@@ -23,6 +23,7 @@ public class Produto {
 	@Column(length = 1250)
 	private String description;
 	private String duracao;
+	@Column(length = 12500)
 	private String capa;
 	
 }
