@@ -1,86 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumierré | Editar filme</title>
-
-    <link rel="stylesheet" href="/css/dashboard.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumierré | Editar filme</title>
+<link rel="stylesheet" href="/css/dashboard.css">
 </head>
 <body>
-
-    <div class="voltar"> 
-        <a href="listMovie.html"><img class="icone" src="/images/voltar.svg" alt=""></a>  
-    </div>  
-
-    <div class="container-editMo">
-        <div class="cards card-edt">
-    
-            <div class="movie-img">
-                <img class="cover" src="/images/taxidriver.svg" alt="" srcset="">
-            </div>
-            <div class="movie-info edt">
-                <p><span style="font-weight: bold">Título:</span> Taxi Driver</p>
-                <p><span style="font-weight: bold">Gênero:</span>Drama e Crime</p>
-                <p>
-                    <span style="font-weight: bold">Descrição:</span> "Taxi Driver" narra a história de Travis
-                    Bickle, um ex-fuzileiro naval que se torna motorista de táxi em Nova York. Atormentado pela
-                    corrupção e pela decadência moral ao seu redor, Travis se afunda em solidão e alienação. Sua
-                    vida se transforma quando ele conhece Iris, uma jovem prostituta de 12 anos, e decide
-                    resgatá-la das garras de seu cafetão.
-                </p>
-                <p><span style="font-weight: bold">Ano de lançamento:</span> 1976</p>
-                <p><span style="font-weight: bold">Duração (em minutos):</span> 113</p>
-            </div>
-        </div>
-
-        <div class="form">
-            <form action="">
-                <label for="">Título:</label>
-                <input type="text" name="title" id="title" placeholder="Digite o título do filme">
-
-                <label for="">Gênero:</label>
-                <select name="category" id="category">
-                    <option value="" disabled selected hidden>Selecione a categoria</option>
-                    <option value="action">Ação</option>
-                    <option value="adventure">Aventura</option>
-                    <option value="comedy">Comédia</option>
-                    <option value="comromance">Comédia Romântica</option>
-                    <option value="documentary">Documentário</option>
-                    <option value="drama">Drama</option>
-                    <option value="fantasy">Fantasia</option>
-                    <option value="scifi">Ficção Científica</option>
-                    <option value="animation">Animação</option>
-                    <option value="musical">Musical</option>
-                    <option value="romance">Romance</option>
-                    <option value="horror">Terror</option>
-                    <option value="thriller">Suspense</option>
-                </select>
-
-                <label for="">Ano de lançamento:</label>
-                <input type="number" name="date" id="date" placeholder="Digite o ano de lançamento">
-
-                <label for="">Sinopse:</label>
-                <input type="text" name="sinopse" id="sinopse" placeholder="Digite a sinopse do filme" maxlength="350">
-
-                <div class="double-inputs">
-                    <div class="input1">
-                        <label for="">Ano de lançamento:</label>
-                        <input type="number" name="date" id="date" placeholder="Digite o ano de lançamento">
-                    </div>
-            
-                    <div class="input2">
-                        <label for="">Duração:</label>
-                        <input type="text" name="duration" id="duration" placeholder="Duração | ex.: 105">
-                    </div>
-                </div>
-
-                <label for="">Capa:</label>
-                <input type="url" name="capa" id="capa" placeholder="Digite a URL da capa desejada">
-
-                <button id="btn-add" type="submit">Adicionar</button>
-            </form>
-        </div>
-    </div>
+	<div class="voltar">
+		<a href="listMovie.html"><img class="icone"
+			src="/images/voltar.svg" alt=""></a>
+	</div>
+	<div class="container-editMo">
+		<div class="cards card-edt">
+			<div class="movie-img">
+				<img class="cover" th:src="${produto.capa}" alt="" srcset="">
+			</div>
+			<div class="movie-info edt">
+				<p style="font-weight: bold">
+					Título: <span style="font-weight: 500" th:text="${produto.titulo}"></span>
+				</p>
+				<p style="font-weight: bold">
+					Gênero: <span style="font-weight: 500" th:text="${produto.genero}"></span>
+				</p>
+				<p style="font-weight: bold">
+					Descrição: <span style="font-weight: 500"
+						th:text="${produto.description}"></span>
+				</p>
+				<p style="font-weight: bold">
+					Valor: <span style="font-weight: 500">R$ </span><span
+						style="font-weight: 500" th:text="${produto.valorAluguel}"></span>
+				</p>
+				<p style="font-weight: bold">
+					Duração (em minutos): <span style="font-weight: 500"
+						th:text="${produto.duracao}"></span>
+				</p>
+			</div>
+		</div>
+		<div class="form">
+			<form action="/locadora/dashboard/updateMovie" method="post"
+				th:object="${produto}">
+				<input type="hidden" th:field="*{id}"> <label for="">Título:</label>
+				<input type="text" th:field="*{titulo}" name="titulo" id="title"
+					placeholder="Digite o título do filme"> <label for="">Gênero:</label>
+				<select th:field="*{genero}" name="genero" id="category">
+					<option value="" disabled selected hidden>Selecione a
+						categoria</option>
+					<option value="Action">Ação</option>
+					<option value="Adventure">Aventura</option>
+					<option value="Comedy">Comédia</option>
+					<option value="Comromance">Comédia Romântica</option>
+					<option value="Documentary">Documentário</option>
+					<option value="Drama">Drama</option>
+					<option value="Fantasy">Fantasia</option>
+					<option value="Scifi">Ficção Científica</option>
+					<option value="Animation">Animação</option>
+					<option value="Musical">Musical</option>
+					<option value="Romance">Romance</option>
+					<option value="Horror">Terror</option>
+					<option value="Thriller">Suspense</option>
+				</select> <label for="">Ano de lançamento:</label> <input type="number"
+					th:field="*{anoLancamento}" name="anoLancamento" id="date"
+					placeholder="Digite o ano de lançamento"> <label for="">Sinopse:</label>
+				<input type="text" th:field="*{description}" name="description"
+					id="sinopse" placeholder="Digite a sinopse do filme"
+					maxlength="350">
+				<div class="double-inputs">
+					<div class="input1">
+						<label for="">Valor de aluguel:</label> <input type="text"  th:field="*{valorAluguel}"
+							name="valorAluguel" id="price"
+							placeholder="Valor do aluguel semanal">
+					</div>
+					<div class="input2">
+						<label for="">Duração:</label> <input type="text"
+							th:field="*{duracao}" name="duracao" id="duration"
+							placeholder="Duração | ex.: 105">
+					</div>
+				</div>
+				<label for="">Capa:</label> <input type="url" th:field="*{capa}"
+					name="capa" id="capa" placeholder="Digite a URL da capa desejada">
+				<button id="btn-add" type="submit">Atualizar</button>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

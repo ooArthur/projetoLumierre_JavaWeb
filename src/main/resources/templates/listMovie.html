@@ -39,23 +39,36 @@
                 </div>
 
                 <div class="cards-list">
-                    <div class="cards" th:each="ob:${lista}" >
+                    <div class="cards" th:each="ob:${lista}">
                         <div class="movie-img">
                             <img class="cover" th:src="${ob.capa}" alt="" srcset="">
                         </div>
                         <div class="movie-info">
-                            <p style="font-weight: bold">Título: <span style="font-weight: 500" th:text="${ob.titulo}"></span></p>
-                            <p style="font-weight: bold">Gênero: <span style="font-weight: 500" th:text="${ob.genero}"></span></p>
                             <p style="font-weight: bold">
-								Descrição: 
-								<span style="font-weight: 500" th:text="${ob.description}"></span>
+                                Título: <span style="font-weight: 500" th:text="${ob.titulo}"></span>
                             </p>
-                            <p style="font-weight: bold">Valor: <span style="font-weight: 500">R$ </span><span style="font-weight: 500" th:text="${ob.valorAluguel}"></span></p>
-                            <p style="font-weight: bold"> Duração (em minutos): <span style="font-weight: 500" th:text="${ob.duracao}"></span></p>
+                            <p style="font-weight: bold">
+                                Gênero: <span style="font-weight: 500" th:text="${ob.genero}"></span>
+                            </p>
+                            <p style="font-weight: bold">
+                                Descrição: <span style="font-weight: 500"
+                                    th:text="${ob.description}"></span>
+                            </p>
+                            <p style="font-weight: bold">
+                                Valor: <span style="font-weight: 500">R$ </span><span
+                                    style="font-weight: 500" th:text="${ob.valorAluguel}"></span>
+                            </p>
+                            <p style="font-weight: bold">
+                                Duração: <span style="font-weight: 500"
+                                    th:text="${ob.duracao}"></span> <span style="font-weight: 500">minutos</span>
+                            </p>
+                            <div>
+                                <a th:href="@{/locadora/dashboard/editMovie(id=${ob.id})}" class="btn-edit">Editar</a>
+                                <a th:href="@{/locadora/dashboard/deleteMovie(id=${ob.id})}" class="btn-delete">Excluir</a>
+                            </div>
                         </div>
                     </div>
-           
-                    </div>
+                </div>
             </div>
         </section>
     </main>

@@ -61,12 +61,12 @@ public class LocadoraController {
 	}
 
 	// Atualizando Filme (POST)
-	@PostMapping("/updateMovie")
+	@PostMapping("/dashboard/updateMovie")
 	public String atualizarProduto(@ModelAttribute Produto produto, RedirectAttributes attributes) {
 		serviceP.atualizarProduto(produto);
 		Long id = produto.getId();
 		attributes.addAttribute("message", "Filme com o Id: " + id + " foi atualizado!");
-		return "redirect:dashboard";
+		return "redirect:listMovie";
 	}
 
 	// Visualizando a Página de Editar Filme
@@ -75,7 +75,7 @@ public class LocadoraController {
 		String page;
 		try {
 			Produto produto = serviceP.buscarProduto(id);
-			model.addAttribute("Produto", produto);
+			model.addAttribute("produto", produto);
 			page = "editMovie";
 		} catch (LocadoraNotFoundException e) {
 			e.printStackTrace();
@@ -87,7 +87,7 @@ public class LocadoraController {
 	}
 
 	// Visualizando a Página de Deletar Filme
-	@GetMapping("/deleteMovie")
+	@GetMapping("/dashboard/deleteMovie")
 	public String deletarProduto(@RequestParam Long id, RedirectAttributes attributes) {
 		try {
 			serviceP.deletarProduto(id);
@@ -132,7 +132,7 @@ public class LocadoraController {
 	}
 
 	// Atualizando Usuário (POST)
-	@PostMapping("/updateUser")
+	@PostMapping("/dashboard/updateUser")
 	public String atualizarCliente(@ModelAttribute Cliente cliente, RedirectAttributes attributes) {
 		service.atualizarCliente(cliente);
 		Long id = cliente.getId();
@@ -143,19 +143,19 @@ public class LocadoraController {
 	// Visualizando a Página de Editar Usuário
 	@GetMapping("/dashboard/editUser")
 	public String editarCliente(Model model, RedirectAttributes attributes, @RequestParam Long id) {
-		String page;
-		try {
-			Cliente cliente = service.buscarCliente(id);
-			model.addAttribute("cliente", cliente);
-			page = "editUser";
-		} catch (LocadoraNotFoundException e) {
-			e.printStackTrace();
-			attributes.addAttribute("message", e.getMessage());
-			page = "redirect:listUser";
-		}
-		return page;
-
+	    String page;
+	    try {
+	        Cliente cliente = service.buscarCliente(id);
+	        model.addAttribute("cliente", cliente); // Corrigido aqui
+	        page = "editUser";
+	    } catch (LocadoraNotFoundException e) {
+	        e.printStackTrace();
+	        attributes.addAttribute("message", e.getMessage());
+	        page = "redirect:listUser";
+	    }
+	    return page;
 	}
+
 
 	// Visualizando a Página de Deletar Usuário
 	@GetMapping("/dashboard/deleteUser")
