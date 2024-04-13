@@ -1,7 +1,5 @@
 package br.com.sistema.locadora.models;
 
-import java.math.BigDecimal;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +21,6 @@ public class Produto {
 	private Integer anoLancamento;
 	@Column(length = 1250)
 	private String description;
-	private BigDecimal valorAluguel;
 	private String duracao;
 	@Column(length = 12500)
 	private String capa;

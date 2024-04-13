@@ -2,107 +2,127 @@
 <html lang="en" xmlns:th="https://thymeleaf.org/">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../css/homeCliente.css">
-    <link rel="stylesheet" href="../css/carrosselCliente.css">
-    <link rel="shortcut icon" href="../images/logo-web.svg" type="">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/homeCliente.css">
+<link rel="stylesheet" href="../css/carrosselCliente.css">
+<link rel="stylesheet" href="../css/moviePage.css">
+<link rel="shortcut icon" href="../images/logo-web.svg" type="">
+<link
+	href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+	rel="stylesheet">
 
-    <title>Home | Lumierré</title>
+<title>Home | Lumierré</title>
 </head>
 <body>
-    <main>
-       <Header>
-            <section class="header">
+	<main>
+		<Header>
+			<section class="header">
 
-                <div class="menu">
-                    <div class="logo">
-                        <img src="/images/logo.svg" alt="">
-                    </div>
-    
-                    <div class="Text1">
-                        <h2>Lançamentos</h2>
-                    </div>
-                </div>
+				<div class="menu">
+					<section class="Header">
 
-                <div class="wrapper">
-                    <div class="slide-wrapper" data-slide="wrapper">
-                        <button class="slide-nav-button slide-nav-previous" data-slide="nav-previous-button"></button>
-                        <button class="slide-nav-button slide-nav-next" data-slide="nav-next-button"></button>
-                        <div class="slide-list" data-slide="list">
-                            <div class="slide-item" data-slide="item" data-index="0">
-                                <div class="slide-content">
-                                    <img class="slide-image" src="../images/BobMarley.svg" alt="Bob Marley: One Love" />
-                                </div>
-                            </div>
-                            <div class="slide-item" data-slide="item" data-index="1">
-                                <div class="slide-content">
-                                    <img class="slide-image" src="../images/Oppenheimer.svg" alt="Oppenheimer" />
-                                </div>
-                            </div>
-                            <div class="slide-item" data-slide="item" data-index="2">
-                                <div class="slide-content">
-                                    <img class="slide-image" src="../images/Duna.svg" alt="Duna: Parte dois" />
-                                </div>
-                            </div>
-                            <div class="slide-item" data-slide="item" data-index="3">
-                                <div class="slide-content">
-                                    <img class="slide-image" src="../images/Barbie.svg" alt="Barbie: O filme" />
-                                </div>
-                            </div>
-                            <div class="slide-item" data-slide="item" data-index="4">
-                                <div class="slide-content">
-                                    <img class="slide-image" src="../images/Wonka.svg" alt="Wonka" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slide-controls" data-slide="controls-wrapper">
-                        </div>
-                    </div>
-                </div>
-                
-            </section>
+						<div class="voltar">
+							<img class="icone" src="/images/voltar.svg" alt="">
 
-            <section class="catalogo">
+						</div>
 
-                <h2>Catálogo</h2>
+						<a th:href="@{/locadora/}">Voltar</a>
 
-                <div class="fileira">
+						<div class="logo">
+							<img src="/images/logo.svg" alt="">
+						</div>
 
-                    <div class="card-filmes" th:each="ob:${lista}">
-                        <a th:href="@{/locadora/home/moviePage(id=${ob.id})}"><img th:src="${ob.capa}" alt=""></a>
-                        <p class="filme1" th:text="${ob.titulo}"></p>
-                    </div>
+					</section>
 
-                </div>
+					<div class="Text1">
+						<h2>Lançamentos</h2>
+					</div>
+				</div>
 
-            </section>
+				<div class="wrapper">
+					<div class="slide-wrapper" data-slide="wrapper">
+						<button class="slide-nav-button slide-nav-previous"
+							data-slide="nav-previous-button"></button>
+						<button class="slide-nav-button slide-nav-next"
+							data-slide="nav-next-button"></button>
+						<div class="slide-list" data-slide="list">
+							<div class="slide-item" data-slide="item" data-index="0">
+								<div class="slide-content">
+									<img class="slide-image" src="../images/BobMarley.svg"
+										alt="Bob Marley: One Love" />
+								</div>
+							</div>
+							<div class="slide-item" data-slide="item" data-index="1">
+								<div class="slide-content">
+									<img class="slide-image" src="../images/Oppenheimer.svg"
+										alt="Oppenheimer" />
+								</div>
+							</div>
+							<div class="slide-item" data-slide="item" data-index="2">
+								<div class="slide-content">
+									<img class="slide-image" src="../images/Duna.svg"
+										alt="Duna: Parte dois" />
+								</div>
+							</div>
+							<div class="slide-item" data-slide="item" data-index="3">
+								<div class="slide-content">
+									<img class="slide-image" src="../images/Barbie.svg"
+										alt="Barbie: O filme" />
+								</div>
+							</div>
+							<div class="slide-item" data-slide="item" data-index="4">
+								<div class="slide-content">
+									<img class="slide-image" src="../images/Wonka.svg" alt="Wonka" />
+								</div>
+							</div>
+						</div>
+						<div class="slide-controls" data-slide="controls-wrapper"></div>
+					</div>
+				</div>
 
-            <section class="footer">
-                <div>
-                    <hr>
-                    <div class="direitos">
-                        <img class="logo-footer" src="../images//logo.svg" alt="">
-                        <img class="copyright" src="../images/copyrights.svg" alt="">
-                        <p>2024 | Direitos autorais</p>
-                    </div>
-                    
-                </div>
+			</section>
 
-            </section>
-       </Header>
-    </main>
+			<section class="catalogo">
 
-    <script src="/js/CarrosselCliente.js"></script>
-        <script>
-            initSlider({
-                autoPlay: true,
-                startAtIndex: 0,
-                timeInterval: 1800
-            })
-        </script>
-    
+				<h2>Catálogo</h2>
+
+				<div class="fileira">
+
+					<div class="card-filmes" th:each="ob:${lista}">
+						<a th:href="@{/locadora/home/moviePage(id=${ob.id})}"><img
+							th:src="${ob.capa}" alt=""></a>
+						<p class="filme1" th:text="${ob.titulo}"></p>
+					</div>
+
+				</div>
+
+			</section>
+
+			<section class="footer">
+				<div>
+					<hr>
+					<div class="direitos">
+						<img class="logo-footer" src="../images//logo.svg" alt=""> <img
+							class="copyright" src="../images/copyrights.svg" alt="">
+						<p>2024 | Direitos autorais</p>
+					</div>
+
+				</div>
+
+			</section>
+		</Header>
+	</main>
+
+	<script src="/js/CarrosselCliente.js"></script>
+	<script>
+		initSlider({
+			autoPlay : true,
+			startAtIndex : 0,
+			timeInterval : 1800
+		})
+	</script>
+
 </body>
 </html>

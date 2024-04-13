@@ -30,7 +30,9 @@ body{
 
 .logo img{
     display: flex;
-    margin: 15% 0 15% 0;
+    margin: 15% 0 0 0;
+    width: 0 auto;
+    height: 10vw;
 }
 
 .title{
@@ -43,7 +45,7 @@ body{
 }
 
 .options{
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: column;
 }
@@ -59,7 +61,7 @@ body{
     font-size: 1.2vw;
     text-decoration: none;
     color: #FFF;
-    margin-bottom: 15%;
+    margin-bottom: 13%;
     display: flex;
     align-items: center;
 }
@@ -285,6 +287,10 @@ table, th, td {
     border-radius: 15px 0 0 15px;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 /* =========== Editar usuários ============== */
 
 .container-editUs {

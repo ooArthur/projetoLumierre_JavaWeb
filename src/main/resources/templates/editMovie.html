@@ -28,8 +28,9 @@
 						th:text="${produto.description}"></span>
 				</p>
 				<p style="font-weight: bold">
-					Valor: <span style="font-weight: 500">R$ </span><span
-						style="font-weight: 500" th:text="${produto.valorAluguel}"></span>
+
+					Ano Lancamento<span style="font-weight: 500"
+						th:text="${produto.anoLancamento}"></span>
 				</p>
 				<p style="font-weight: bold">
 					Duração (em minutos): <span style="font-weight: 500"
@@ -59,17 +60,17 @@
 					<option value="Romance">Romance</option>
 					<option value="Horror">Terror</option>
 					<option value="Thriller">Suspense</option>
-				</select> <label for="">Ano de lançamento:</label> <input type="number"
-					th:field="*{anoLancamento}" name="anoLancamento" id="date"
-					placeholder="Digite o ano de lançamento"> <label for="">Sinopse:</label>
-				<input type="text" th:field="*{description}" name="description"
-					id="sinopse" placeholder="Digite a sinopse do filme"
-					maxlength="350">
+
+				</select> <label for="">Sinopse:</label> <input type="text"
+					th:field="*{description}" name="description" id="sinopse"
+					placeholder="Digite a sinopse do filme" maxlength="350">
 				<div class="double-inputs">
 					<div class="input1">
-						<label for="">Valor de aluguel:</label> <input type="text"  th:field="*{valorAluguel}"
-							name="valorAluguel" id="price"
-							placeholder="Valor do aluguel semanal">
+
+						<label for="">Ano de lançamento:</label> <input maxlength="4"
+							type="text" th:field="*{anoLancamento}" name="anoLancamento"
+							id="date" placeholder="Digite o ano de lancamento">
+
 					</div>
 					<div class="input2">
 						<label for="">Duração:</label> <input type="text"
