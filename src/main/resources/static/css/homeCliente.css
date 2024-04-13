@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    color: white;
+  }
+
+body {
+   background: linear-gradient(#022859, #021D40) no-repeat;
+}
+
+/* oi laricel */
+
+.logo img { 
+   width: 0 auto;
+   height: 5vw;
+   transform: translate(45vw);
+   margin-top: 3vw;
+   margin-bottom: 3vw;
+}
+
+.Text1 h2 {
+   font-size: 2vw;
+   margin-bottom: 1vw;
+   margin-left: 5.5vw;
+}
+
+.catalogo {
+   margin: 5vw 5vw 5vw ;
+}
+
+.catalogo h2 {
+   margin-bottom: 1vw;
+   font-size: 2vw;
+}
+
+.fileira {
+   display: flex;
+}
+
+.card-filmes:not(:first-child) {
+   margin-left: 2vw;
+}
+
+.card-filmes img {
+   width: 0 auto;
+   height: 22vw;
+   margin-bottom: .5vw;
+}
+
+.card-filmes p {
+   font-size: 1.2vw;
+}
+
+.footer hr{
+   width: 88vw;
+   margin-left: 5vw;
+   opacity: 70%;
+}
+
+.direitos {
+   display: flex;
+   margin: 2vw;
+}
+
+.logo-footer  {
+   width: 0 auto;
+   height: 5vw;
+   margin-left: 5vw;
+}
+
+.direitos p {
+   transform: translate(30vw);
+   font-size: 1vw;
+   font-weight: 300;
+   opacity: 70%;
+   margin-top: 2vw;
+}
+
+.copyright {
+   transform: translate(29vw);
+   margin-top: .5vw;
+   opacity: 70%;
+   width: 0 auto;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumierré | Listar Filmes</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body>
+    <main>
+        <section class="container">
+            <div class="container-menu">
+                <div class="logo">
+                    <img src="/images/logo.svg" alt="">
+                </div>
+                <div class="title">
+                    <h1>Selecione uma das opções abaixo:</h1>
+                </div>
+                <div class="options">
+                    <a th:href="@{/locadora/dashboard/addMovie}"><img src="/images/icon-filme.svg" alt="">Adicionar filme</a>
+                    <a th:href="@{/locadora/dashboard/listMovie}" id="list-movie"><img src="/images/icon-busca.svg" alt="">Listar filmes</a>
+                    <a th:href="@{/locadora/dashboard/addUser}" id="add-user"><img src="/images/icon-user.svg" alt="">Adicionar usuário</a>
+                    <a th:href="@{/locadora/dashboard/listUser}" id="list-user"><img src="/images/icon-buser.svg" alt="">Listar usuários</a>
+                    <a th:href="@{/locadora/}"><img src="/images/icon-sair.svg" alt="">Sair</a>
+                </div>
+            </div>
+
+            <div class="list">
+                <div class="titlelist">
+                    <div class="image">
+                        <img src="/images/icon-busca.svg" alt="" id="img-title">
+                    </div>
+                    <div class="title-add">
+                        <h1>Listar filmes</h1>
+                    </div>
+                </div>
+
+                <div class="cards-list">
+                    <div class="cards" th:each="ob:${lista}">
+                        <div class="movie-img">
+                            <img class="cover" th:src="${ob.capa}" alt="" srcset="">
+                        </div>
+                        <div class="movie-info">
+                            <p style="font-weight: bold">
+                                Título: <span style="font-weight: 500" th:text="${ob.titulo}"></span>
+                            </p>
+                            <p style="font-weight: bold">
+                                Gênero: <span style="font-weight: 500" th:text="${ob.genero}"></span>
+                            </p>
+                            <p style="font-weight: bold">
+                                Descrição: <span style="font-weight: 500"
+                                    th:text="${ob.description}"></span>
+                            </p>
+                            <p style="font-weight: bold">
+                                Ano lançamento: <span style="font-weight: 500" 
+                                th:text="${ob.anoLancamento}"></span>
+                            </p>
+                            <p style="font-weight: bold">
+                                Duração: <span style="font-weight: 500"
+                                    th:text="${ob.duracao}"></span> <span style="font-weight: 500">minutos</span>
+                            </p>
+                            <div>
+                                <a th:href="@{/locadora/dashboard/editMovie(id=${ob.id})}"><button class="btn-edit">Editar </button></a>
+                                <a th:href="@{/locadora/dashboard/deleteMovie(id=${ob.id})}"><button class="btn-delete">Excluir </button>/</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>

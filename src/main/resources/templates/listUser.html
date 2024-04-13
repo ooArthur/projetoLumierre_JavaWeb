@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body>
+    <main>
+        <section class="container">
+            <div class="container-menu">
+                <div class="logo">
+                    <img src="/images/logo.svg" alt="">
+                </div>
+                <div class="title">
+                    <h1>Selecione uma das opções abaixo:</h1>
+                </div>
+                <div class="options">
+                    <a th:href="@{/locadora/dashboard/addMovie}"><img src="/images/icon-filme.svg" alt="">Adicionar filme</a>
+                    <a th:href="@{/locadora/dashboard/listMovie}" id="list-movie"><img src="/images/icon-busca.svg" alt="">Listar filmes</a>
+                    <a th:href="@{/locadora/dashboard/addUser}" id="add-user"><img src="/images/icon-user.svg" alt="">Adicionar usuário</a>
+                    <a th:href="@{/locadora/dashboard/listUser}" id="list-user"><img src="/images/icon-buser.svg" alt="">Listar usuários</a>
+                    <a th:href="@{/locadora/}"><img src="/images/icon-sair.svg" alt="">Sair</a>
+                </div>
+            </div>
+
+            <div class="list-users">
+                <div class="ltitle">
+                    <div class="image">
+                        <img src="/images/icon-buser.svg" alt="" id="img-title">
+                    </div>
+                    <div class="title-add">
+                        <h1>Listar usuários</h1>
+                    </div>
+                </div>
+                <table class="table-users">
+                    <tr class="list-title">
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Senha</th>
+                        <th>Data de Nascimento</th>
+                        <th>Permissão</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
+                    </tr>
+                    <tr class="users" th:each="ob:${lista}">
+                        <span></span>
+                        <td th:text="${ob.id}"></td>
+                        <td th:text="${ob.nome}"></td>
+                        <td th:text="${ob.email}"></td>
+                        <td th:text="${ob.password}"></td>
+                        <td th:text="${ob.dataNascimento}"></td>
+                        <td th:text="${ob.nivelPermissao}"></td>
+                        <td>
+                        <a th:href="@{/locadora/dashboard/editUser(id=${ob.id})}"><button class="btn-edit">Editar</button></a>
+                        </td>
+                        <td>
+                        <a th:href="@{/locadora/dashboard/deleteUser(id=${ob.id})}"><button class="btn-delete">Deletar</button></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+
+    </main>
+</body>
+
+</html>

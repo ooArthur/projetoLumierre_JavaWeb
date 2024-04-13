@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/moviePage.css">
+    <link rel="stylesheet" href="/css/homeCliente.css">
+    <link rel="shortcut icon" href="/images/logo-web.svg" type="">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>Filme | Lumierré</title>
+</head>
+<body>
+    <main>
+        <section class="Header">
+
+            <div class="voltar"> 
+                <img class="icone" src="/images/voltar.svg" alt="">
+                
+            </div>
+
+            <a th:href="@{/locadora/home}">Voltar</a>
+
+            <div class="logo">
+                <img src="/images/logo.svg" alt="">
+            </div>
+
+        </section>
+
+        <section class="descricao">
+
+            <div class="banner-img">
+                <img th:src="${produto.capa}" alt="">
+            </div>
+
+            <div class="Texto-filme">
+                <div class="title">
+                    <p th:text="${produto.titulo}"></p>
+                </div>
+                
+                <div class="info">
+                    <p th:text="${produto.genero}"></p>
+                    <p><span th:text="${produto.duracao}"> </span> minutos</p> 
+                </div>
+
+                <div class="sobre">
+                    <p th:text="${produto.description}"></p> 
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="footer">
+            <div>
+                <hr>
+                <div class="direitos">
+                    <img class="logo-footer" src="/images//logo.svg" alt="">
+                    <img class="copyright" src="/images/copyrights.svg" alt="">
+                    <p>2024 | Direitos autorais</p>
+                </div>
+                
+            </div>
+
+        </section>
+    </main>
+    
+</body>
+</html>

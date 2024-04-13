@@ -1,0 +1,75 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+}
+
+body{
+  max-width: 100%;
+} 
+
+.intro{
+  background-image: url("../images/avatarbg.svg");
+  width: 100%;
+  height: 100vh; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  display: flex;
+}
+
+.title-intro{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5%;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img{
+  max-height: 20vh;
+}
+
+.text-intro{
+  width: 35vw;
+  text-align: center;
+  color: #fff;
+  font-style: italic;
+  font-size: 2vw;
+  margin-bottom: 2%;
+}
+
+.btn-intro a{
+  color: #fff;
+  padding: 1.5vh 4.5vw;
+  font-size: 1.3vw;
+  font-weight: light;
+  border-radius: 20px;
+  background: #022859;
+  text-decoration: none;
+  transition-duration: 0.5s;
+}
+
+.btn-intro a:hover{
+  background: rgb(2,36,80, 0.5);
+}
+
+.character-intro {
+  width: 50%;
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+}
+
+
+.character-intro .imagem1 {
+  position: absolute; 
+  max-height: 100%;
+}
+
+.character-intro #avatar {
+  z-index: 1;
+}

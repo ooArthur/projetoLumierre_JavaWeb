@@ -1,0 +1,336 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Jost", sans-serif;
+    text-decoration: none;
+}
+
+body{
+    background-color: #021D40;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+}
+
+.container-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #022859;
+    min-width: 25%;
+    height: 100vh;
+    color: #FFF;
+    gap: 7%;
+    border-radius: 0px 30px 30px 0px;
+    position: fixed;
+}
+
+.logo img{
+    display: flex;
+    margin: 15% 0 0 0;
+    width: 0 auto;
+    height: 10vw;
+}
+
+.title{
+    width: 70%;
+    text-align: center;
+}
+
+.title h1{
+    font-size: 1.5vw;
+}
+
+.options{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.options button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.options a, .options button{
+    text-decoration: none;
+    font-size: 1.2vw;
+    text-decoration: none;
+    color: #FFF;
+    margin-bottom: 13%;
+    display: flex;
+    align-items: center;
+}
+
+.options img{
+    margin-right: 5%;
+}
+
+.content{
+    background: #021D40;
+    width: 70%;
+}
+
+/* ========== adicionar filme ========== */
+
+.add{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+    width: calc(100% - 25%);
+    margin-top: 5%;
+}
+
+.titleadd{
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    gap: 1vw;
+    margin-bottom: 2vh;
+}
+
+#img-title{
+    width: 2vw;
+}
+
+.form{
+    display: flex;
+    margin: 0 auto;
+    color: #FFF;
+    font-size: 25px;
+}
+
+.form input,
+.form select{
+    display: flex;
+    width: 35vw;
+    height: 7vh;
+    border-radius: 15px;
+    border: none;
+    margin-bottom: 15px;
+}
+
+.form input{
+    flex-direction: column;
+}
+
+.form select{
+    font-size: 1vw;
+    padding: 1vw;
+}
+
+.double-inputs{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input1, .input2{
+    display: flex;
+    flex-direction: column;
+}
+
+input:focus, select:focus{
+    outline: none;
+}
+
+.double-inputs input{
+    width: 16vw;
+}
+
+#btn-add{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35vw;
+    height: 7vh; 
+    border: none;
+    border-radius: 15px;
+    background: #023373;
+    font-size: 1.3vw;
+    color: #FFF;
+    cursor: pointer;
+}
+
+input{
+    font-size: 1vw;
+    padding: 1vw;
+    text-transform: capitalize;
+}
+
+#capa, #email, #date, input::placeholder{
+    text-transform: none;
+}
+
+/* ========== Tabela da listagem ========== */
+
+.list-users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 25%;
+    width: calc(100% - 25%);
+    margin-top: 5%;
+}
+
+.ltitle{
+    color: #FFF;
+    display: flex;
+    font-size: 1.5vw;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+    margin-bottom: 3vh;
+}
+
+.table-users {
+    width: 90%;
+    background: #022859;
+}
+
+.list-title {
+    color: #FFF;
+    font-size: 0.9vw;
+}
+
+.list-title th{
+    padding: 1vh;
+}
+
+.users {
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.users td {
+    padding: 25px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.btn-edit,
+.btn-delete{
+    border: none;
+    border-radius: 10px;
+    padding: 1vh 2vw;
+    cursor: pointer;
+    color: #000000;
+}
+
+.btn-edit a {
+    color: #000000;
+}
+
+/* =========== Listar filmes ============== */
+
+.list{
+    margin-top: 5%;
+}
+
+.titlelist{
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    gap: 1vw;
+    width: calc(100% - 25%);
+    margin-left: 25%;
+    text-align: center;
+}
+
+.cards-list {
+    display: grid;
+    gap: .5vw;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 25%;
+    width: calc(100% - 25%);
+}
+
+.cards{
+    display: flex;
+    margin: 2vw;
+}
+
+.movie-img img{
+    height: 50vh;
+}
+
+.movie-info{
+    background: #023373;
+    border-radius: 0 15px 15px 0;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5vh;
+    height: 50vh;
+}
+
+.movie-info p{
+    color: #FFF;
+    font-size: .9vw;
+}
+
+.cover{
+    border-radius: 15px 0 0 15px;
+}
+
+
+/* =========== Editar usuários ============== */
+
+.container-editUs {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.voltar a img{
+    margin: 2.4vw 4.5vw;
+}
+
+.content-table {
+    margin: 0vw 4.5vw;
+    max-width: 100%;
+}
+
+.tb-edt {
+    width: 100%;
+}
+
+.edt-frm {
+    margin-top: 6vh;
+    max-width: 50%;
+}
+
+/* =========== Editar filmes ============== */
+
+.container-editMo {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-edt {
+    max-width: 45%;
+}
+
+.edt {
+    gap: 2vh;
+}
+
+.edt p {
+    font-size: 1vw;
+}

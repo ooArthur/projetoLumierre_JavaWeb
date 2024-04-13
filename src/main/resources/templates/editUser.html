@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org/">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumierré | Editar usuário</title>
+
+<link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+
+<div class="voltar">
+    <a th:href="@{/locadora/dashboard/listUser}"><img class="icone" src="/images/voltar.svg" alt=""></a>
+</div>
+
+<div class="container-editUs">
+    <div class="content-table">
+        <table class="table-users tb-edt">
+            <tr class="list-title">
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Senha</th>
+                <th>Data de Nascimento</th>
+                <th>Permissão</th>
+            </tr>
+            <tr class="users">
+                <td th:text="${cliente.id}"></td>
+                <td th:text="${cliente.nome}"></td>
+                <td th:text="${cliente.email}"></td>
+                <td th:text="${cliente.password}"></td>
+                <td th:text="${cliente.dataNascimento}"></td>
+                <td th:text="${cliente.nivelPermissao}"></td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="form edt-frm">
+        <form action="/locadora/dashboard/updateUser" method="post" th:object="${cliente}">
+            <input type="hidden" th:field="*{id}">
+            <label for="">Nome:</label>
+            <input type="text" th:field="*{nome}" name="nome" id="title" placeholder="Digite seu nome">
+            <label for="">E-mail:</label>
+            <input type="email" th:field="*{email}" name="email" id="email" placeholder="Digite seu e-mail">
+            <label for="">Senha:</label>
+            <input type="text" th:field="*{password}" name="password" id="senha" placeholder="Digite sua senha">
+            <label for="">Nível de permissão:</label>
+            <select th:field="*{nivelPermissao}" name="nivelPermissao" id="category">
+                <option value="" disabled hidden>Selecione o nível de permissão</option>
+                <option value="Administrador">Administrador</option>
+                <option value="Cliente">Cliente</option>
+            </select>
+            <label for="">Data de nascimento:</label>
+            <input type="date" th:field="*{dataNascimento}" name="dataNascimento" id="date">
+
+            <button id="btn-add" type="submit">Atualizar</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
