@@ -13,7 +13,7 @@ Um Sistema de Locadora desenvolvido no curso  de Desenvolvimento Java na institu
 
 ## Documentação da API
 
-    Base URL: /locadora
+    Base URL: /locadora/
 
 ### Rotas do Controller LocadoraController
 
